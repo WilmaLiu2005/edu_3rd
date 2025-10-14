@@ -119,14 +119,9 @@ def extract_features_from_dialog(file_path, df_class, df_homework, df_schedule, 
         avg_question_length = float(question_lengths.mean()) if len(question_lengths) > 0 else 0.0
         # 6-10. 提问入口特征
         if '提问入口' in df.columns:
-            is_courseware = int("课件不懂" in df["提问入口"].values)
-            is_discussion = int("讨论单元" in df["提问入口"].values)
-            is_ai_task = int("课堂AI任务" in df["提问入口"].values)
-            is_exercise = int("习题不懂" in df["提问入口"].values)
             if_non_class = int((df["提问入口"] != "班级").any()) if qa_turns > 0 else 0
         else:
             print(f"Warning: File missing entry point column: {file_name}")
-            is_courseware = is_discussion = is_ai_task = is_exercise = 0
             if_non_class = 0
         # 11. QA与下一次最接近的作业的时间关系（小时）
         hours_to_assignment_list = []
@@ -181,10 +176,6 @@ def extract_features_from_dialog(file_path, df_class, df_homework, df_schedule, 
             "avg_qa_time_minutes": float(avg_qa_time),
             "total_question_chars": int(total_question_chars),
             "avg_question_length": float(avg_question_length),
-            "is_courseware_entry": int(is_courseware),
-            "is_discussion_entry": int(is_discussion),
-            "is_ai_task_entry": int(is_ai_task),
-            "is_exercise_entry": int(is_exercise),
             "if_non_class": int(if_non_class),
             "avg_hours_to_assignment": float(avg_hours_to_assignment),
             "avg_hours_since_release": float(avg_hours_since_release),

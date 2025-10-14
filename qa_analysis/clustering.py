@@ -14,7 +14,6 @@ def get_cluster_color_map(n_clusters):
 feature_columns = [
         'qa_turns', 'is_multi_turn', 'total_time_minutes', 'avg_qa_time_minutes',
         'total_question_chars', 'avg_question_length',
-        'is_courseware_entry', 'is_discussion_entry', 'is_ai_task_entry', 'is_exercise_entry',
         'if_non_class', 'avg_hours_to_assignment', 'avg_hours_since_release',
         'course_progress_ratio', 'calendar_week_since_2025_0217',
         'hours_to_next_class', 'hours_from_last_class', 'has_copy_keywords'
@@ -22,8 +21,7 @@ feature_columns = [
     
     # Binary columns (not standardized)
 binary_cols = [
-        'is_multi_turn', 'is_courseware_entry', 'is_discussion_entry',
-        'is_ai_task_entry', 'is_exercise_entry', 'if_non_class', 'has_copy_keywords'
+        'is_multi_turn', 'if_non_class', 'has_copy_keywords'
     ]
 
 def find_optimal_components_for_clustering(pca, variance_threshold=0.8):
