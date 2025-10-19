@@ -2,7 +2,7 @@ import numpy as np
 import pandas as pd
 import re
 
-COPY_KEYWORDS = ["如下", "如上", "这道题", "怎么做", "做法", "A.", "B.", "C.", "D."]
+COPY_KEYWORDS = ["如下", "如上", "这道题", "怎么做", "做法", "A.", "B.", "C.", "D.", "我对这一页不懂"]
 
 def replace_inf_with_reasonable_value(series, multiplier=1.5):
     """将无穷大值替换为合理的有限值"""
@@ -23,12 +23,15 @@ def debug_infinite_values(features_df):
     """调试无穷大值（更新版）"""
     print("=== Checking Infinite Values ===")
     
-    # 更新特征列表（新增两个时间特征）
+    # 更新特征列表
     feature_columns = [
-        'qa_turns', 'is_multi_turn','total_time_minutes', 'avg_qa_time_minutes',
+        'qa_turns', 'is_multi_turn', 'total_time_minutes', 'avg_qa_time_minutes',
         'total_question_chars', 'avg_question_length',
-        'if_non_class', 'avg_hours_to_assignment', 'avg_hours_since_release', 'course_progress_ratio', 'calendar_week_since_2025_0217',
-        'hours_to_next_class', 'hours_from_last_class', 'has_copy_keywords'  # 新增
+        'if_non_class', 'avg_hours_to_assignment', 'avg_hours_since_release',
+        'course_progress_ratio', 'calendar_week_since_2025_0217',
+        'hours_to_next_class', 'hours_from_last_class', 'has_copy_keywords', 'copy_keywords_count',
+        'is_exam_week','day_period','is_weekend',
+        'is_in_class_time','question_type_why_how'
     ]
     
     print("Available columns in features_df:")

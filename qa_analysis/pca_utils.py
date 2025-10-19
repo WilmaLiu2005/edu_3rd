@@ -15,12 +15,15 @@ def perform_pca_analysis(features_df, output_folder):
         'total_question_chars', 'avg_question_length',
         'if_non_class', 'avg_hours_to_assignment', 'avg_hours_since_release',
         'course_progress_ratio', 'calendar_week_since_2025_0217',
-        'hours_to_next_class', 'hours_from_last_class', 'has_copy_keywords'
+        'hours_to_next_class', 'hours_from_last_class', 'has_copy_keywords', 'copy_keywords_count',
+        'is_exam_week','day_period','is_weekend',
+        'is_in_class_time','question_type_why_how'
     ]
     
     # Binary columns (not standardized)
     binary_cols = [
-        'is_multi_turn', 'if_non_class', 'has_copy_keywords'
+        'is_multi_turn', 'if_non_class', 'has_copy_keywords',
+        'is_exam_week', 'is_weekend', 'is_in_class_time', 'question_type_why_how',
     ]
     binary_cols_present = [c for c in binary_cols if c in feature_columns and c in features_df.columns]
     continuous_cols = [c for c in feature_columns if c not in binary_cols_present]
