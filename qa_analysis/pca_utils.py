@@ -11,15 +11,17 @@ import os
 FEATURE_COLUMNS = [
     'qa_turns', 'is_multi_turn', 'total_time_minutes', 'avg_qa_time_minutes',
     'total_question_chars', 'avg_question_length', 'if_non_class', 
+    'is_video_unit', 'is_discussion_unit', 'is_graphic_unit', 'is_ai_task', 'is_confusion_entry',
     'avg_hours_to_assignment', 'avg_hours_since_release', 'course_progress_ratio', 
     'calendar_week_since_2025_0217', 'hours_to_next_class', 'hours_from_last_class', 
-    'has_copy_keywords', 'copy_keywords_count', 'is_exam_week', 'day_period',
-    'is_weekend', 'is_in_class_time', 'question_type_why_how'
+    'is_copy_paste', 'copy_keywords_count', 'is_exam_week', 'day_period',
+    'is_weekend', 'is_in_class_time', 'question_type_why'
 ]
 
 BINARY_COLUMNS = [
-    'is_multi_turn', 'if_non_class', 'has_copy_keywords',
-    'is_exam_week', 'is_weekend', 'is_in_class_time', 'question_type_why_how'
+    'is_multi_turn', 'if_non_class', 'is_copy_paste', 'is_video_unit', 
+    'is_discussion_unit', 'is_graphic_unit', 'is_ai_task', 'is_confusion_entry',
+    'is_exam_week', 'is_weekend', 'is_in_class_time', 'question_type_why'
 ]
 
 TIME_FEATURES = ['hours_to_next_class', 'hours_from_last_class']
